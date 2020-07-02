@@ -1,8 +1,10 @@
 const express = require('express');
 const { uuid } = require('uuidv4');
+const cors = require('cors');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 /*
@@ -48,6 +50,7 @@ app.use(logRequests);
 app.get('/projects', (request, response) => {
 
     const { title } = request.query;
+    console.log(title);
 
     const results = title
         ? projects.filter(project => project.title.includes(title))
